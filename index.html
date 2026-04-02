@@ -2,77 +2,101 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projet Français</title>
 
 <style>
+
+/* ===== STYLE GENERAL ===== */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #1e1e2f, #3a3a6a);
     color: white;
+    scroll-behavior: smooth;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 header {
     text-align: center;
-    padding: 60px 20px;
+    padding: 70px 20px;
 }
 
 header h1 {
     font-size: 3em;
+    margin-bottom: 20px;
 }
 
+/* ===== NAVIGATION ===== */
 nav a {
     margin: 10px;
     color: #00e5ff;
     text-decoration: none;
     font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
 }
 
 nav a:hover {
-    color: white;
+    background: #00e5ff;
+    color: #111;
 }
 
-/* SECTIONS */
+/* ===== SECTIONS ===== */
 section {
     background: white;
     color: black;
     margin: 40px auto;
-    padding: 30px;
+    padding: 35px;
     width: 80%;
+    max-width: 900px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transform: translateY(50px);
+
+    transform: translateY(60px);
     opacity: 0;
-    transition: 0.8s;
+    transition: all 0.8s ease;
 }
 
-/* Animation */
+/* Animation apparition */
 section.visible {
     transform: translateY(0);
     opacity: 1;
 }
 
-/* TITRES */
+/* ===== TITRES ===== */
 h2 {
     color: #3a3a6a;
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer {
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
+    padding: 25px;
+    margin-top: 50px;
     background: #111;
 }
-</style>
 
+/* ===== RESPONSIVE (téléphone) ===== */
+@media (max-width: 700px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    section {
+        width: 90%;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
     <h1>Ma Problématique</h1>
+
     <nav>
         <a href="#intro">Introduction</a>
         <a href="#partie1">Argument 1</a>
@@ -83,39 +107,57 @@ footer {
 
 <section id="intro">
     <h2>Introduction</h2>
-    <p>Présente ici ton sujet et ta problématique.</p>
+    <p>
+        Présente ici ton sujet, le contexte et la problématique étudiée.
+        Explique pourquoi ce sujet est important.
+    </p>
 </section>
 
 <section id="partie1">
     <h2>Argument 1</h2>
-    <p>Développe ton premier argument avec des exemples.</p>
+    <p>
+        Développe ton premier argument avec des exemples précis,
+        des citations ou des analyses.
+    </p>
 </section>
 
 <section id="partie2">
     <h2>Argument 2</h2>
-    <p>Développe ton deuxième argument avec des exemples.</p>
+    <p>
+        Développe ton deuxième argument en montrant un autre point de vue
+        ou un approfondissement du sujet.
+    </p>
 </section>
 
 <section id="conclusion">
     <h2>Conclusion</h2>
-    <p>Répond clairement à ta problématique.</p>
+    <p>
+        Répond clairement à la problématique et ouvre éventuellement
+        sur une réflexion plus large.
+    </p>
 </section>
 
 <footer>
-    <p>Projet scolaire - 2026</p>
+    <p>Projet scolaire - 2026 | Site réalisé par Lucas</p>
 </footer>
 
 <script>
+
+/* ===== ANIMATION SCROLL ===== */
 const sections = document.querySelectorAll("section");
 
-window.addEventListener("scroll", () => {
+function revealSections() {
     sections.forEach(sec => {
         const top = sec.getBoundingClientRect().top;
         if (top < window.innerHeight - 100) {
             sec.classList.add("visible");
         }
     });
-});
+}
+
+window.addEventListener("scroll", revealSections);
+window.addEventListener("load", revealSections);
+
 </script>
 
 </body>
